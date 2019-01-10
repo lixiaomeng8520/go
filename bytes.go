@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"fmt"
 	"os"
+	"io/ioutil"
 )
 
 func bytes1() {
@@ -35,4 +36,10 @@ func bytes2() {
 
 	n, err := b.ReadFrom(f)
 	fmt.Println(n, err, b.Bytes(), b.Len(), b.Cap())
+}
+
+func bytes3() {
+	b, _ := ioutil.ReadFile("1")
+
+	fmt.Println(b, len(b), cap(b))
 }
