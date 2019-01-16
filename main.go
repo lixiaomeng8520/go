@@ -1,6 +1,6 @@
 package main
 
 func main() {
-	sync1()
+	gin1()
 }
 
