@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"log"
 	"net"
-	"io/ioutil"
 	// "reflect"
 )
 
@@ -17,12 +16,21 @@ func main() {
 	
 	for {
 		// c : *TCPConn
-		c, err := l.Accept()
+		cFrom, err := l.Accept()
 		if err != nil {
 			fmt.Println(err)
 			continue
 		}
-		b, err := ioutil.ReadAll(c)
-		fmt.Println(string(b), err)
+		defer cFrom.Close()
+		
+		cTo, err := net.Dial("tcp", "http://s.dahe.cn")
+		if err != nil {
+			fmt.Println(err)
+			continue
+		}
+		defer cTo.Close()
+
+		
+
 	}
 }
